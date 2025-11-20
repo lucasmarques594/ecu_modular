@@ -1,0 +1,34 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#define SAMPLE_RATE_HZ 100U
+#define SAMPLE_PERIOD_MS (1000U / SAMPLE_RATE_HZ)
+
+#define MOVING_AVG_WINDOW 10U
+#define LOW_PASS_ALPHA 0.2f
+
+#define DEBOUNCE_COUNT 5U
+
+#define TEMP_MIN (-40)
+#define TEMP_MAX 150
+#define TEMP_WARNING 95
+#define TEMP_CRITICAL 110
+
+#define OIL_PRESSURE_MIN 0.0f
+#define OIL_PRESSURE_MAX 10.0f
+#define OIL_PRESSURE_WARNING 1.5f
+#define OIL_PRESSURE_CRITICAL 1.0f
+
+#define RPM_MIN 0U
+#define RPM_MAX 8000U
+#define RPM_IDLE 800U
+#define RPM_REDLINE 6500U
+
+#define SIMULATION_DURATION_MS 30000U
+#define PRINT_INTERVAL_MS 500U
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846f
+#endif
+
+#endif
