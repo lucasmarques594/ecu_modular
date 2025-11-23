@@ -5,14 +5,14 @@
 #include "../common/types.h"
 
 typedef struct {
-  sensor_valuer_t values[MOVING_AVG_WINDOW];
+  sensor_value_t values[MOVING_AVG_WINDOW];
   counter_t index;
-  sensor_valuer_t sum;
+  sensor_value_t sum;
 } MovingAverageFilter_t;
 void MovingAverageFilter_Init(MovingAverageFilter_t *filter);
-sensor_valuer_t MovingAverageFilter_Apply(MovingAverageFilter_t *filter,
-                                          sensor_valuer_t value);
+sensor_value_t MovingAverageFilter_Apply(MovingAverageFilter_t *filter,
+                                         sensor_value_t value);
 void MovingAverageFilter_Reset(MovingAverageFilter_t *filter);
-sensor_valuer_t MovingAvarage_GetValue(const MovingAverageFilter_t *filter);
+sensor_value_t MovingAvarage_GetValue(const MovingAverageFilter_t *filter);
 
 #endif
