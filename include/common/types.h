@@ -10,7 +10,7 @@ typedef enum {
   ALERT_CRITICAL = 2
 } AlertLevel_t;
 
-typedef float sensor_valuer_t;
+typedef float sensor_value_t;
 typedef uint32_t counter_t;
 typedef uint32_t timestamp_ms_t;
 
