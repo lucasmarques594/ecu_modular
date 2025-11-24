@@ -19,4 +19,8 @@ typedef struct {
   bool is_low_alert;
 } Sensor_t;
 
+void Sensor_Init(Sensor_t *sensor, const char *name, sensor_value_t warning,
+                 sensor_value_t critical, bool is_low_alert,
+                 sensor_value_t alpha);
+
 #endif
