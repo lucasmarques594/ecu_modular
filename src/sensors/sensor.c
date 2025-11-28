@@ -94,7 +94,7 @@ void Sensor_Reset(Sensor_t *sensor) {
   sensor->filtered_ma = 0.0f;
   sensor->filtered_lp = 0.0f;
 
-  MovingAverage_Reset(&sensor->ma_filter);
+  MovingAverageFilter_Reset(&sensor->ma_filter);
   LowPass_Reset(&sensor->lp_filter);
   Alert_DebounceReset(&sensor->alert_debounce);
 }
