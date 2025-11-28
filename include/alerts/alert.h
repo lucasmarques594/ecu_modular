@@ -1,8 +1,8 @@
 #ifndef ALERT_H
 #define ALERT_H
 
-#include "../common/config.h"
-#include "../common/types.h"
+#include "common/config.h"
+#include "common/types.h"
 
 typedef struct {
   AlertLevel_t current_level;
