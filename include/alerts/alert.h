@@ -1,8 +1,8 @@
 #ifndef ALERT_H
 #define ALERT_H
 
-#include "../common/config.h"
-#include "../common/types.h"
+#include "common/config.h"
+#include "common/types.h"
 
 typedef struct {
   AlertLevel_t current_level;
@@ -18,5 +18,7 @@ void Alert_DebounceReset(AlertDebounce_t *debounce);
 
 AlertLevel_t Alert_DetermineLevel(sensor_value_t value, sensor_value_t warning,
                                   sensor_value_t critical, bool is_low_alert);
+
+const char *Alert_LevelToString(AlertLevel_t level);
 
 #endif

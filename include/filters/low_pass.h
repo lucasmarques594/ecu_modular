@@ -1,7 +1,7 @@
 #ifndef LOW_PASS_H
 #define LOW_PASS_H
 
-#include "../common/types.h"
+#include "common/types.h"
 
 typedef struct {
   sensor_value_t previous_output;

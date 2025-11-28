@@ -1,8 +1,8 @@
 #ifndef MOVING_AVERAGE_H
 #define MOVING_AVERAGE_H
 
-#include "../common/config.h"
-#include "../common/types.h"
+#include "common/config.h"
+#include "common/types.h"
 
 typedef struct {
   sensor_value_t values[MOVING_AVG_WINDOW];
