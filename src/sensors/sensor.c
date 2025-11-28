@@ -1,4 +1,4 @@
-#include "../../include/sensors/sensor.h"
+#include "sensors/sensor.h"
 #include <stddef.h>
 #include <stdio.h>
 
@@ -32,7 +32,7 @@ void Sensor_Update(Sensor_t *sensor, sensor_value_t raw_value) {
 
   sensor->raw_value = raw_value;
   sensor->filtered_ma =
-      MovingAverageFilter_Update(&sensor->ma_filter, raw_value);
+      MovingAverageFilter_Apply(&sensor->ma_filter, raw_value);
   sensor->filtered_lp = LowPass_Update(&sensor->lp_filter, raw_value);
 
   new_alert_level =
