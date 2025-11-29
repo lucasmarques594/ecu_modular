@@ -27,3 +27,13 @@ OBJECTS = $(SOURCES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 all: directories $(TARGET)
 
+directories:
+	@mkdir -p $(BUILD_DIR)/filters
+	@mkdir -p $(BUILD_DIR)/alerts
+	@mkdir -p $(BUILD_DIR)/sensors
+	@mkdir -p $(BIN_DIR)
+
+$(TARGET): $(OBJECTS)
+	@echo "Linkando: $@"
+	@$(CC) $(OBJECTS) $(LDFLAGS) -o $@
+	@echo "✓ Compilação concluída: $@"
