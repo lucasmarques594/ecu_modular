@@ -18,7 +18,7 @@ void Sensor_Init(Sensor_t *sensor, const char *name, sensor_value_t warning,
   sensor->filtered_ma = 0.0f;
   sensor->filtered_lp = 0.0f;
 
-  MovingAverageFilter_Init(&sensor->ma_filter);
+  MovingAverage_Init(&sensor->ma_filter);
   LowPass_Init(&sensor->lp_filter, alpha);
   Alert_DebounceInit(&sensor->alert_debounce);
 }
@@ -31,8 +31,7 @@ void Sensor_Update(Sensor_t *sensor, sensor_value_t raw_value) {
   }
 
   sensor->raw_value = raw_value;
-  sensor->filtered_ma =
-      MovingAverageFilter_Apply(&sensor->ma_filter, raw_value);
+  sensor->filtered_ma = MovingAverage_Update(&sensor->ma_filter, raw_value);
   sensor->filtered_lp = LowPass_Update(&sensor->lp_filter, raw_value);
 
   new_alert_level =
@@ -94,7 +93,7 @@ void Sensor_Reset(Sensor_t *sensor) {
   sensor->filtered_ma = 0.0f;
   sensor->filtered_lp = 0.0f;
 
-  MovingAverageFilter_Reset(&sensor->ma_filter);
+  MovingAverage_Reset(&sensor->ma_filter);
   LowPass_Reset(&sensor->lp_filter);
   Alert_DebounceReset(&sensor->alert_debounce);
 }
