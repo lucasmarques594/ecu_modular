@@ -25,3 +25,5 @@ SOURCES = $(FILTER_SRC) $(ALERT_SRC) $(SENSOR_SRC) $(MAIN_SRC)
 
 OBJECTS = $(SOURCES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
+all: directories $(TARGET)
+
