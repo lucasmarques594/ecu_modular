@@ -17,7 +17,7 @@ FILTER_SRC = $(SRC_DIR)/filters/moving_average.c \
 ALERT_SRC = $(SRC_DIR)/alerts/alert.c
 
 SENSOR_SRC = $(SRC_DIR)/sensors/sensor.c \
-             $(SRC_DIR)/sensors/sensor_simulator.c
+             $(SRC_DIR)/sensors/sensor_simulation.c
 
 MAIN_SRC = $(SRC_DIR)/main.c
 
