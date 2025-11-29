@@ -41,3 +41,33 @@ static void print_sensor_status(const Sensor_t *temp_sensor,
   Sensor_Print(oil_sensor);
   Sensor_Print(rpm_sensor);
 }
+
+static void check_and_print_alerts(const Sensor_t *temp_sensor,
+                                   const Sensor_t *oil_sensor,
+                                   const Sensor_t *rpm_sensor) {
+  AlertLevel_t temp_alert = Sensor_GetAlertLevel(temp_sensor);
+  AlertLevel_t oil_alert = Sensor_GetAlertLevel(oil_sensor);
+  AlertLevel_t rpm_alert = Sensor_GetAlertLevel(rpm_sensor);
+
+  if ((temp_alert != ALERT_NONE) || (oil_alert != ALERT_NONE) ||
+      (rpm_alert != ALERT_NONE)) {
+
+    printf("\n");
+
+    if (temp_alert != ALERT_NONE) {
+      printf("⚠️  ALERTA: Temperatura %s! (%.1f°C)\n",
+             Alert_LevelToString(temp_alert),
+             Sensor_GetFilteredMA(temp_sensor));
+    }
+
+    if (oil_alert != ALERT_NONE) {
+      printf("⚠️  ALERTA: Pressão de óleo %s! (%.2f bar)\n",
+             Alert_LevelToString(oil_alert), Sensor_GetFilteredMA(oil_sensor));
+    }
+
+    if (rpm_alert != ALERT_NONE) {
+      printf("⚠️  ALERTA: RPM %s! (%.0f RPM)\n", Alert_LevelToString(rpm_alert),
+             Sensor_GetFilteredMA(rpm_sensor));
+    }
+  }
+}
