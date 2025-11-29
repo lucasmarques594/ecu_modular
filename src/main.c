@@ -1,4 +1,6 @@
 #include "common/config.h"
+#include "common/types.h"
+#include "sensors/sensor.h"
 #include <stdio.h>
 
 static void print_header(void) {
@@ -27,4 +29,15 @@ static void print_system_info(void) {
   printf("Iniciando monitoramento...\n");
   printf(
       "=================================================================\n\n");
+}
+
+static void print_sensor_status(const Sensor_t *temp_sensor,
+                                const Sensor_t *oil_sensor,
+                                const Sensor_t *rpm_sensor,
+                                timestamp_ms_t time_ms) {
+  printf("Tempo: %6.2f s\n", (float)time_ms / 1000.0f);
+  printf("-----------------------------------------------------------------\n");
+  Sensor_Print(temp_sensor);
+  Sensor_Print(oil_sensor);
+  Sensor_Print(rpm_sensor);
 }
