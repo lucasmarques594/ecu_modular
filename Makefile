@@ -37,3 +37,42 @@ $(TARGET): $(OBJECTS)
 	@echo "Linkando: $@"
 	@$(CC) $(OBJECTS) $(LDFLAGS) -o $@
 	@echo "✓ Compilação concluída: $@"
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	@echo "Compilando: $<"
+	@$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+clean:
+	@echo "Limpando arquivos de build..."
+	@rm -rf $(BUILD_DIR) $(BIN_DIR)
+	@echo "✓ Limpeza concluída"
+
+run: all
+	@echo "Executando $(TARGET)..."
+	@./$(TARGET)
+
+analyze: CFLAGS += -fanalyzer
+analyze: clean all
+
+debug: CFLAGS += -g -O0 -DDEBUG
+debug: clean all
+	@echo "✓ Build de debug criado"
+
+info:
+	@echo "========================================"
+	@echo "Projeto: ECU Sensor Monitor (Modular)"
+	@echo "========================================"
+	@echo "Compilador: $(CC)"
+	@echo "Flags: $(CFLAGS)"
+	@echo "Target: $(TARGET)"
+	@echo ""
+	@echo "Comandos disponíveis:"
+	@echo "  make          - Compila o projeto"
+	@echo "  make run      - Compila e executa"
+	@echo "  make clean    - Remove arquivos de build"
+	@echo "  make debug    - Build com símbolos de debug"
+	@echo "  make analyze  - Análise estática (GCC 10+)"
+	@echo "  make info     - Mostra esta mensagem"
+	@echo "========================================"
+
+.PHONY: all clean run analyze debug info directories
