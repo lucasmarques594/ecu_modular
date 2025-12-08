@@ -1,0 +1,21 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c99 -O2
+LDFLAGS = -lm -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+
+TARGET = bin/ecu_gui
+
+all:
+	@mkdir -p bin
+	@$(CC) $(CFLAGS) -Iinclude gui/main_gui.c \
+		src/filters/*.c src/alerts/*.c src/sensors/*.c \
+		$(LDFLAGS) -o $(TARGET)
+	@echo "✓ Build concluído!"
+
+run: all
+	@./$(TARGET)
+
+clean:
+	@rm -rf bin build
+	@echo "✓ Limpeza concluída"
+
+.PHONY: all run clean
