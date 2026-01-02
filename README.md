@@ -1,5 +1,7 @@
 <h1 align="center">🚗 ECU Sensor Monitor</h1>
 
+<h4 align="center">Projeto dedicado para o estudo e conclusão do curso PÓS ENGENHARIA DE SOFTWARE</h4>
+
 <p align="center">
   <em>Sistema modular de monitoramento de sensores automotivos com conformidade MISRA-C.</em>
 </p>
